@@ -1,4 +1,4 @@
-import { StyleSheet, Text } from "react-native";
+import { Platform, StyleSheet, Text } from "react-native";
 import Colors from "../.expo/constant/color";
 
 function Title({ children }) {
@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     // fontWeight: "bold",
     color: "white",
     textAlign: "center",
-    borderWidth: 2,
+    // borderWidth: Platform.OS === "android" ? 2 : 0,
+    borderWidth: Platform.select({ ios: 0, android: 2 }),
     borderColor: Colors.accent500,
     padding: 12,
     maxWidth: "80%",

@@ -13,11 +13,22 @@ import PryBtn from "../components/prybtn";
 
 function Gameover({ roundsNumber, userNumber, onStartGame }) {
   const { width, height } = useWindowDimensions();
+  let imageSize = 300;
+  if (width > height) {
+    imageSize = 160;
+  }
+
+  const imageStyle = {
+    width: imageSize,
+    height: imageSize,
+    borderRadius: imageSize / 2,
+  };
+
   return (
-    <ScrollView>
+    <ScrollView style={{ flex: 1 }}>
       <View style={styles.container}>
         <Title>Game Over</Title>
-        <View style={styles.imgCover}>
+        <View style={[styles.imgCover, imageStyle]}>
           <Image
             style={styles.img}
             source={require("../assets/images/success.png")}
@@ -34,7 +45,8 @@ function Gameover({ roundsNumber, userNumber, onStartGame }) {
     </ScrollView>
   );
 }
-const devicewidth = Dimensions.get("window").width;
+// const devicewidth = Dimensions.get("window").width;
+// const deviceHeight = Dimensions.get("window").height;
 export default Gameover;
 
 const styles = StyleSheet.create({
@@ -45,12 +57,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imgCover: {
-    width: devicewidth < 350 ? 150 : 300,
-    height: devicewidth < 380 ? 150 : 300,
+    // width: devicewidth < 350 ? 150 : 300,
+    // height: devicewidth < 380 ? 150 : 300,
     borderWidth: 3,
     borderColor: Colors.Primary800,
     margin: 32,
-    borderRadius: devicewidth < 365 ? 75 : 150,
+    // borderRadius: devicewidth < 365 ? 75 : 150,
     overflow: "hidden",
   },
   img: {
